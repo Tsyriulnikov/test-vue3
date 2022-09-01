@@ -31,25 +31,40 @@
 
             <div class="form-group">
                 <label>Guests</label>
-                <input type="button" class="btn btn-primary" value="+">
+                <input @click="addGuest" type="button" class="btn btn-primary" value="+">
             </div>
-            <div class="form-group">
-                Guest 1 ....
+            <div>
+                <div class="form-group" v-for="guest,i in guests">
+                    <label @dbclick="removeGuest(i)">Guest {{ i + 1 }}</label>
+                    <input v-model.trim="guests[i]" type="text" class="form-control">
+                </div>
             </div>
             <hr>
-            <button class="btn btn-success">Send Data</button>
+            <button class="btn btn-success" :disabled="!formReady">Send Data</button>
         </form>
-        <div>
+        <div v-else>
             <h2>All done!</h2>
             <table class="table table-bordered">
                 <tr>
-                    <td>Em</td>
-                    <td></td>
+                    <td>Email</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>{{ user.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Full Name</td>
+                    <td>{{ fullName }}</td>
                 </tr>
                 <tr>
                     <td>Guests</td>
                     <td>
-
+                        <ul class="list-group">
+                            <li class="last-group-item" v-for="guest in guests">
+                                {{ guest }}
+                            </li>
+                        </ul>
                     </td>
                 </tr>
             </table>

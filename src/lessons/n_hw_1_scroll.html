@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link href="css/styles.css" rel="stylesheet">
+    <link  href="fonts/font-awesome.min.css">
+    <link  href="css/styles.css" rel="stylesheet">
     <style>
         .content {
             height: 300px;
@@ -18,8 +18,8 @@
 <body>
 <div class="wrapper">
     <div class="sample">
-        <form>
-            <div class="content alert alert-info">
+        <form v-if = "!formDone" @submit.prevent="sendForm" >
+            <div class="content alert alert-info" @scroll="onScroll">
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
@@ -81,11 +81,20 @@
             spamType: 'email'
         }),
         computed: {
-
+            progressStyles() {
+                return {width: this.scrollValue * 100 + '%'};
+            },
+            scrollDone() {
+                return this.scrollValue > 0.99;
+            },
+            formReady() {
+                return this.scrollDone && this.flags.agree;
+            }
         },
         methods: {
             onScroll(e) {
                 let el = e.target;
+                // console.log(this.scrollValue)
                 this.scrollValue = Math.max(
                     this.scrollValue,
                     el.scrollTop / (el.scrollHeight - el.clientHeight)

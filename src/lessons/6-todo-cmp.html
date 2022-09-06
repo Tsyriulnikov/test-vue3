@@ -13,13 +13,13 @@
 	<div class="sample">
 		<div class="Todo">
 			<h1>Your actions</h1>
-			<app-todo-action 
+			<app-todo-action
 				v-for="action,i in todoList"
 				:key="i"
-				:title="action.title" 
-				:value="action.current" 
+				:title="action.title"
+				:value="action.current"
 				:max="action.max"
-				@step="makeStep(i)"
+				@step="m akeStep(i)"
 			></app-todo-action>
 		</div>
 	</div>

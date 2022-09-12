@@ -79,7 +79,15 @@ export default {
 		}
 	},
 	methods: {
-
+		onUpdate(i, val){
+			let field = this.info[i];
+			field.value = val.trim();
+			field.valid = field.pattern.test(field.value);
+		},
+		sendForm(){
+			if(this.formReady){
+				this.formDone = true;
+			}
 		}
 	},
 	created(){

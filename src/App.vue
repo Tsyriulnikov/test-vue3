@@ -3,7 +3,7 @@
 		<form @submit.prevent="sendForm" v-if="!formDone">
 			<app-progress :current="fieldDone" :max="info.length" />
 			<div>
-				<app-field 
+				<app-field
 					v-for="field,i in info"
 					:key="i"
 					:label="field.label"
@@ -79,15 +79,7 @@ export default {
 		}
 	},
 	methods: {
-		onUpdate(i, val){
-			let field = this.info[i];
-			field.value = val.trim();
-			field.valid = field.pattern.test(field.value);
-		},
-		sendForm(){
-			if(this.formReady){
-				this.formDone = true;
-			}
+
 		}
 	},
 	created(){

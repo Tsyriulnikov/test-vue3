@@ -58,9 +58,7 @@ export default {
 				pattern: /.+/
 			},
 			{
-				label: 'Some Field 2',
-				value: '',
-				pattern: /.+/
+
 			}
 		],
 		formDone: false

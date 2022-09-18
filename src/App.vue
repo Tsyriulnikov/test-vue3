@@ -37,7 +37,34 @@ export default {
 	components: { AppField, AppProgress },
 	data: () => ({
 		info: [
-
+			{
+				label: 'Name',
+				value: '',
+				pattern: /^[a-zA-Z ]{2,30}$/
+			},
+			{
+				label: 'Phone',
+				value: '',
+				pattern: /^[0-9]{7,14}$/
+			},
+			{
+				label: 'Email',
+				value: '',
+				pattern: /.+/
+			},
+			{
+				label: 'Some Field 1',
+				value: '',
+				pattern: /.+/
+			},
+			{
+				label: 'Some Field 2',
+				value: '',
+				pattern: /.+/
+			}
+		],
+		formDone: false
+	}),
 	computed: {
 		fieldDone(){
 			// return this.info.reduce((total, field) => total + (field.valid ? 1 : 0), 0)
